@@ -8,8 +8,8 @@
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
-              <a href="#" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium">Home</a>
-              <a href="#" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium">Add</a>
+              <router-link to="/home" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium">Home</router-link>
+              <router-link to="/add" class="text-white hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium">Add</router-link>
             </div>
           </div>
         </div>
@@ -46,8 +46,8 @@
     </div>
     <div :class="{'block': open, 'hidden': !open}" class="md:hidden">
       <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-        <a href="#" class="text-white hover:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">Home</a>
-        <a href="#" class="text-white hover:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">Add</a>
+        <router-link to="/home" class="text-white hover:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">Home</router-link>
+        <router-link to="/add" class="text-white hover:text-gray-200 block px-3 py-2 rounded-md text-base font-medium">Add</router-link>
       </div>
       <div class="pt-4 pb-3 border-t border-gray-700">
         <div class="flex items-center px-5">
