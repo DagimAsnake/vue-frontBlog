@@ -1,16 +1,19 @@
 <template>
-  <div class="p-4 m-auto border-2 rounded-lg bg-slate-800 text-white w-80">
-    <h1 class="text-3xl font-bold">Hello world!</h1>
-    <p class="mt-5">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam qui
-      minima autem nobis animi perspiciatis deleniti quaerat, recusandae
-      officiis ea totam quisquam repellat quidem perferendis ad! Vel officia
-      voluptatibus ipsam.
-    </p>
-    <button
-      class="bg-red-600 hover:bg-indigo-800 mt-4 font-bold py-2 px-4 rounded"
-    >
-      Click Me
-    </button>
-  </div>
+ <NavBar />
+
+ <Footer />
+  
 </template>
+
+<script>
+import NavBar from "./components/NavBar.vue"
+import Footer from "./components/Footer.vue"
+
+export default {
+    components: {
+      NavBar,
+      Footer
+  }
+}
+</script>
+
