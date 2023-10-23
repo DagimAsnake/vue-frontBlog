@@ -38,9 +38,20 @@ export default {
       // Handle edit logic here
       // You can navigate to the edit page or show a form for editing the blog
     },
-    deleteBlog() {
-      // Handle delete logic here
-      // You can show a confirmation dialog and delete the blog if confirmed
+    async deleteBlog() {
+      try {
+        const response = await fetch(`http://localhost:8000/blog/delete/${this.$route.params.id}`, {
+          method: 'DELETE'
+        });
+        if (response.ok) {
+            
+          this.$router.push('/');
+        } else {
+          console.error('Error deleting blog:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error deleting blog:', error);
+      }
     }
   }
 };
