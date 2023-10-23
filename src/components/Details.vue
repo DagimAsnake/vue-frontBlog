@@ -4,7 +4,7 @@
     <p class="text-gray-500 text-sm mb-4">{{ blog.topic }}</p>
     <p class="mb-4">{{ blog.content }}</p>
     <div class="flex">
-      <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 mr-2" @click="editBlog">Edit</button>
+      <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 mr-2" @click="editBlog(blog._id)">Edit</button>
       <button class="px-4 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600" @click="deleteBlog">Delete</button>
     </div>
   </div>
@@ -34,9 +34,8 @@ export default {
         console.error('Error fetching blog details:', error);
       }
     },
-    editBlog() {
-      // Handle edit logic here
-      // You can navigate to the edit page or show a form for editing the blog
+    editBlog(blogId) {
+      this.$router.push({ name: 'edit', params: { id: blogId } });
     },
     async deleteBlog() {
       try {
@@ -44,7 +43,7 @@ export default {
           method: 'DELETE'
         });
         if (response.ok) {
-            
+
           this.$router.push('/');
         } else {
           console.error('Error deleting blog:', response.statusText);
