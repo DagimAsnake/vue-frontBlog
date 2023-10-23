@@ -1,10 +1,53 @@
 <template>
-  <h1>Details</h1>
-  <h2>{{id}}</h2>
+  <div class="max-w-xl mx-auto mt-8 p-4">
+    <h1 class="text-2xl font-bold mb-4">{{ blog.title }}</h1>
+    <p class="text-gray-500 text-sm mb-4">{{ blog.topic }}</p>
+    <p class="mb-4">{{ blog.content }}</p>
+    <div class="flex">
+      <button class="px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 mr-2" @click="editBlog">Edit</button>
+      <button class="px-4 py-2 bg-red-500 text-white font-semibold rounded-md hover:bg-red-600" @click="deleteBlog">Delete</button>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    props: ['id']
-}
+  data() {
+    return {
+      blog: {}
+    };
+  },
+  async mounted() {
+    this.fetchBlogDetails();
+  },
+  methods: {
+    async fetchBlogDetails() {
+      try {
+        const response = await fetch(`http://localhost:8000/blog/${this.$route.params.id}`);
+        if (response.ok) {
+          const data = await response.json();
+          this.blog = data.msg;
+        } else {
+          console.error('Error fetching blog details:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error fetching blog details:', error);
+      }
+    },
+    editBlog() {
+      // Handle edit logic here
+      // You can navigate to the edit page or show a form for editing the blog
+    },
+    deleteBlog() {
+      // Handle delete logic here
+      // You can show a confirmation dialog and delete the blog if confirmed
+    }
+  }
+};
 </script>
+
+<style>
+button:hover {
+  cursor: pointer;
+}
+</style>
